@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>日本国有鉄道DE10ディーゼル機関車 動輪周引張力</title>
+    <title>日本国有鉄道DE10形液体式ディーゼル機関車 動輪周引張力</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>動輪周引張力グラフ</h1>
+        <h1>日本国有鉄道DE10形液体式ディーゼル機関車 動輪周引張力</h1>
         
         <div class="main-layout">
             <div class="control-panel">
@@ -53,16 +53,17 @@
         <div>
             <h2>説明</h2>
             <p>加速度を計算するのに必要なのが動輪周引張力[kg]です。</p>
-            <p>まず、「国鉄DE10形 付図」より目測で4, 6, 8, 10, 12, 14ノッチの変速機低速段と高速段についてプロットしました。</p>
+            <p>まず、「国鉄DE10形 付図」(所持する資料)より目測で4, 6, 8, 10, 12, 14ノッチの変速機低速段と高速段についてプロットしました。</p>
             <p>次に、高速段の低ノッチについては85km/hまで記載されていなかったため、ロジスティック回帰により漸化外挿しました。低速段と高速段については自動変速であることを考慮し、出力が大きい方を採用しました。</p>
             <p>奇数ノッチ、プロット間の速度についてはSciPyのRegularGridInterpolator()により外挿しました。</p>
             <p>1-3ノッチについては、4ノッチの出力を適当に抑えた形となっており、厳密な参考にはなりません。</p>
-            <p>traction_data.json に結果データがあります。ご利用の際はSNS、電子メール等でひと声かけてください。</p>
+            <p><a href="https://mipsparc.github.io/DE10_traction_graph/traction_data.json">こちらのJSON</a>にデータがあります。ご利用の際はSNS、電子メール等でひと声かけてください。無償ですのでぜひ活用して下さい。</p>
+            <p>今後、これをもとに加速度を計算できるWebサイトも作成予定です。</p>
         </div>
 
         <div>
             <h2>作成者</h2>
-            <p>mipsparc (GitHub / X(Twitter))</p>
+            <p>mipsparc (GitHub / X(Twitter) 等で連絡がつきます)</p>
         </div>
     </div>
 
