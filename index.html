@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本国有鉄道DE10ディーゼル機関車 動輪周引張力</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>動輪周引張力グラフ</h1>
+        
+        <div class="main-layout">
+            <div class="control-panel">
+                <div class="input-group">
+                    <label for="notch-slider">ノッチ: <span id="notch-val">4</span> ノッチ</label>
+                    <input type="range" id="notch-slider" min="1" max="14" step="1" value="4">
+                </div>
+                
+                <div class="input-group">
+                    <label for="speed-slider">速度: <span id="speed-val">0.0</span> km/h</label>
+                    <input type="range" id="speed-slider" min="0" max="85" step="0.5" value="0" style="width: 100%;">
+                </div>
+
+                <div class="result-display">
+                    <h2>動輪周引張力</h2>
+                    <p class="traction-value"><span id="traction-val">0</span> <span class="unit">kg</span></p>
+                </div>
+            </div>
+
+            <div class="visualization-panel">
+                <canvas id="tractionChart"></canvas>
+            </div>
+        </div>
+
+        <div class="table-panel">
+            <h3>現在のノッチにおける速度別引張力</h3>
+            <div class="table-wrapper">
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>速度 (km/h)</th>
+                            <th>動輪周引張力 (kg)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div>
+            <h2>説明</h2>
+            <p>加速度を計算するのに必要なのが動輪周引張力[kg]です。</p>
+            <p>まず、「国鉄DE10形 付図」より目測で4, 6, 8, 10, 12, 14ノッチの変速機低速段と高速段についてプロットしました。</p>
+            <p>次に、高速段の低ノッチについては85km/hまで記載されていなかったため、ロジスティック回帰により漸化外挿しました。低速段と高速段については自動変速であることを考慮し、出力が大きい方を採用しました。</p>
+            <p>奇数ノッチ、プロット間の速度についてはSciPyのRegularGridInterpolator()により外挿しました。</p>
+            <p>1-3ノッチについては、4ノッチの出力を適当に抑えた形となっており、厳密な参考にはなりません。</p>
+            <p>traction_data.json に結果データがあります。ご利用の際はSNS、電子メール等でひと声かけてください。</p>
+        </div>
+
+        <div>
+            <h2>作成者</h2>
+            <p>mipsparc (GitHub / X(Twitter))</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
